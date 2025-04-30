@@ -40,7 +40,7 @@ def find_ajt_japanese_js_import(template_html: str) -> str | None:
 
 def strip_ajt_js(template_html: str) -> str:
     if script := find_ajt_japanese_js_import(template_html):
-        return template_html.replace(script, "").strip()
+        return template_html.replace(script, "").strip() + "\n"  # newline at the end of file
     return template_html
 
 
