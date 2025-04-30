@@ -12,3 +12,4 @@ README_FILENAME = "README.md"
 THIS_DIR = pathlib.Path.cwd()
 NOTE_TYPES_DIR = THIS_DIR / "templates"
 REPO_MEDIA_DIR = THIS_DIR / "media"
+AJT_FILE_NAME_PREFIX = "_ajt_japanese_"

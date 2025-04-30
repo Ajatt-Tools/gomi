@@ -11,6 +11,7 @@ import shutil
 from os import DirEntry
 from typing import Any
 
+from .ajt_japanese_scripts import strip_ajt_references
 from .ankiconnect import invoke, request_model_names
 from .common import CardTemplate, NoteType, find_referenced_media_files, select
 from .consts import (
@@ -22,6 +23,7 @@ from .consts import (
     README_FILENAME,
     JSON_INDENT,
     REPO_MEDIA_DIR,
+    AJT_FILE_NAME_PREFIX,
 )
 from .typing import GomiOnDiskModelDict
 
@@ -109,6 +111,10 @@ def save_media_imports(model: NoteType) -> None:
     """
     linked_media_files = find_referenced_media_files(model.css)
     for file_name in linked_media_files:
+        if file_name.startswith(AJT_FILE_NAME_PREFIX):
+            # Skip files added by AJT Japanese.
+            # AJT Japanese will add them when a profile is opened or when the add-on's settings are saved.
+            continue
         if file_b64 := invoke("retrieveMediaFile", filename=file_name):
             full_path = os.path.join(REPO_MEDIA_DIR, file_name)
             with open(full_path, "bw") as f:
@@ -123,6 +129,7 @@ def export_note_type() -> None:
     if model := select(request_model_names()):
         print(f"Selected model: {model}")
         template = fetch_template(model)
+        template = strip_ajt_references(template)
         save_note_type(template)
         save_media_imports(template)
         print("Done.")
