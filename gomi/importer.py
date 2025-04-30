@@ -5,6 +5,7 @@
 import json
 import os
 
+from .ajt_japanese_scripts import strip_ajt_references
 from .ankiconnect import invoke, request_model_names
 from .common import CardTemplate, NoteType, find_referenced_media_files, select
 from .consts import NOTE_TYPES_DIR, CSS_FILENAME, FRONT_FILENAME, BACK_FILENAME, JSON_FILENAME, REPO_MEDIA_DIR
@@ -87,6 +88,7 @@ def import_note_type() -> None:
     if model_dir_name := select(os.listdir(NOTE_TYPES_DIR)):
         print(f"Selected model: {model_dir_name}")
         model = read_model(model_dir_name)
+        model = strip_ajt_references(model)
         send_note_type(model)
         save_files_to_anki_col(find_referenced_media_files(model.css))
         print("Done.")
