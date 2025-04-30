@@ -23,6 +23,7 @@ from .consts import (
     JSON_INDENT,
     REPO_MEDIA_DIR,
 )
+from .typing import GomiOnDiskModelDict
 
 
 def fetch_card_templates(model_name: str) -> list[CardTemplate]:
@@ -64,7 +65,7 @@ def write_card_templates(model_dir_path: pathlib.Path, templates: list[CardTempl
                 f.write(content)
 
 
-def format_export(model: NoteType) -> dict[str, Any]:
+def format_export(model: NoteType) -> GomiOnDiskModelDict:
     return {
         "modelName": model.name,
         "inOrderFields": model.fields,

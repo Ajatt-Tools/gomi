@@ -4,11 +4,11 @@
 
 import json
 import os
-from typing import Any, Collection, Iterable, Sequence
 
 from .ankiconnect import invoke, request_model_names
 from .common import CardTemplate, NoteType, find_referenced_media_files, select
 from .consts import NOTE_TYPES_DIR, CSS_FILENAME, FRONT_FILENAME, BACK_FILENAME, JSON_FILENAME, REPO_MEDIA_DIR
+from .typing import GomiOnDiskModelDict, AnkiConnectModelDict
 
 
 def read_css(model_dir_name: str) -> str:
@@ -28,7 +28,7 @@ def read_card_templates(model_dir_name: str, template_names: list[str]) -> list[
     return templates
 
 
-def read_model_dict(model_dir_name: str) -> dict[str, Any]:
+def read_model_dict(model_dir_name: str) -> GomiOnDiskModelDict:
     with open(os.path.join(NOTE_TYPES_DIR, model_dir_name, JSON_FILENAME), encoding="utf8") as f:
         return json.load(f)
 
@@ -43,7 +43,7 @@ def read_model(model_dir_name: str) -> NoteType:
     )
 
 
-def format_import(model: NoteType) -> dict[str, Any]:
+def format_import(model: NoteType) -> AnkiConnectModelDict:
     return {
         "modelName": model.name,
         "inOrderFields": model.fields,
