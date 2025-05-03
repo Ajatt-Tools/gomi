@@ -116,7 +116,7 @@ def save_media_imports(model: NoteType) -> None:
             # AJT Japanese will add them when a profile is opened or when the add-on's settings are saved.
             continue
         if file_b64 := invoke("retrieveMediaFile", filename=file_name):
-            full_path = os.path.join(REPO_MEDIA_DIR, file_name)
+            full_path = REPO_MEDIA_DIR / file_name
             with open(full_path, "bw") as f:
                 f.write(base64.b64decode(file_b64))
             print(f"saved file: '{full_path}'")
