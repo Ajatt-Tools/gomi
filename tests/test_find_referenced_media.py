@@ -32,9 +32,9 @@ TEMPLATES = [
 
 def test_find_referenced_urls() -> None:
     result = find_url_imports(MODEL_CSS)
-    assert frozenset(result) == {"_ajt_japanese_24.7.14.1.css", "_kso.woff2", "_yumin.woff2", "_tsc_card_css.css"}
+    assert result == {"_ajt_japanese_24.7.14.1.css", "_kso.woff2", "_yumin.woff2", "_tsc_card_css.css"}
 
 
 def test_find_js_files() -> None:
     result = find_js_files(TEMPLATES)
-    assert frozenset(result) == {"_script.js", "_ajt_japanese.js", "my_script.js"}
+    assert result == {"_script.js", "_ajt_japanese.js", "my_script.js"}

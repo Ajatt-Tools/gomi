@@ -59,6 +59,15 @@ def select(items: list[str], msg: str = "Select item number: ") -> str | None:
     return items[idx]
 
 
+def as_unique[Ret: Hashable](fn: Callable[[Any], Sequence[Ret]]) -> Callable[[Any], frozenset[Ret]]:
+    @functools.wraps(fn)
+    def decorator(*args, **kwargs) -> frozenset[Ret]:
+        return frozenset(fn(*args, **kwargs))
+
+    return decorator
+
+
+@as_unique
 def find_js_files(templates: list[CardTemplate]) -> list[str]:
     return re.findall(
         pattern=RE_JS_IMPORT,
@@ -66,6 +75,7 @@ def find_js_files(templates: list[CardTemplate]) -> list[str]:
     )
 
 
+@as_unique
 def find_url_imports(model_css: str) -> list[str]:
     return re.findall(
         pattern=RE_MEDIA_IMPORT,
@@ -77,7 +87,7 @@ def find_referenced_media_files(model: NoteType) -> frozenset[str]:
     """
     Find files referenced by the note type's templates. E.g., fonts, CSS files, JS scripts.
     """
-    return frozenset(find_url_imports(model.css)) | frozenset(find_js_files(model.templates))
+    return find_url_imports(model.css) | find_js_files(model.templates)
 
 
 def init():
