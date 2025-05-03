@@ -8,8 +8,16 @@ import os
 from .ajt_japanese_scripts import strip_ajt_references
 from .ankiconnect import invoke, request_model_names
 from .common import CardTemplate, NoteType, find_referenced_media_files, select
-from .consts import NOTE_TYPES_DIR, CSS_FILENAME, FRONT_FILENAME, BACK_FILENAME, JSON_FILENAME, REPO_MEDIA_DIR
-from .typing import GomiOnDiskModelDict, AnkiConnectModelDict
+from .consts import (
+    BACK_FILENAME,
+    CSS_FILENAME,
+    FRONT_FILENAME,
+    JSON_FILENAME,
+    NOTE_TYPES_DIR,
+    REPO_MEDIA_DIR,
+)
+from .exporter import is_ajt_japanese_addon_file
+from .typing import AnkiConnectModelDict, GomiOnDiskModelDict
 
 
 def read_css(model_dir_name: str) -> str:

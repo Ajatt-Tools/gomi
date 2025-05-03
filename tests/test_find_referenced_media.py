@@ -1,4 +1,4 @@
-from gomi.common import find_url_imports, find_js_files, CardTemplate
+from gomi.common import CardTemplate, find_js_files, find_url_imports
 
 MODEL_CSS = """
 @charset "UTF-8";

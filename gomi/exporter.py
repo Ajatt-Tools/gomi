@@ -15,15 +15,15 @@ from .ajt_japanese_scripts import strip_ajt_references
 from .ankiconnect import invoke, request_model_names
 from .common import CardTemplate, NoteType, find_referenced_media_files, select
 from .consts import (
-    NOTE_TYPES_DIR,
-    FRONT_FILENAME,
-    BACK_FILENAME,
-    JSON_FILENAME,
-    CSS_FILENAME,
-    README_FILENAME,
-    JSON_INDENT,
-    REPO_MEDIA_DIR,
     AJT_FILE_NAME_PREFIX,
+    BACK_FILENAME,
+    CSS_FILENAME,
+    FRONT_FILENAME,
+    JSON_FILENAME,
+    JSON_INDENT,
+    NOTE_TYPES_DIR,
+    README_FILENAME,
+    REPO_MEDIA_DIR,
 )
 from .typing import GomiOnDiskModelDict
 

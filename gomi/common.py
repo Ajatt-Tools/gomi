@@ -2,9 +2,13 @@
 # License: GNU GPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
 
 import dataclasses
+import functools
 import re
+from collections.abc import Callable, Hashable, Sequence
 from dataclasses import dataclass
-from .consts import REPO_MEDIA_DIR, NOTE_TYPES_DIR
+from typing import Any
+
+from .consts import NOTE_TYPES_DIR, REPO_MEDIA_DIR
 
 RE_MEDIA_IMPORT = re.compile(r"url\([\"']([^\"']+\.(?:[ot]tf|woff\d?|css))[\"']\)", flags=re.IGNORECASE)
 RE_JS_IMPORT = re.compile(r"<script [^<>]*src=[\"']([^\"']+\.js)[\"']></script>", flags=re.IGNORECASE)

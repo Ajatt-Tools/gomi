@@ -4,7 +4,7 @@
 import os
 import pathlib
 import sys
-from typing import Callable
+from collections.abc import Callable
 from urllib.error import URLError
 
 from .common import ANTPError, init

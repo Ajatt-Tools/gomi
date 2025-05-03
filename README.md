@@ -4,7 +4,7 @@
 [![Channel](https://shields.io/badge/channel-subscribe-blue?logo=telegram&color=3faee8)](https://t.me/ajatt_tools)
 [![Donate](https://img.shields.io/badge/patreon-support-orange)](https://tatsumoto.neocities.org/blog/donating-to-tatsumoto)
 
-Gomi is a Python package used to store and manage Note Types for Anki in a git repository. 
+Gomi is a Python package used to store and manage Note Types for Anki in a git repository.
 At Ajatt-Tools, we store our note types [here](https://github.com/Ajatt-Tools/AnkiNoteTypes).
 Gomi provides a super user-friendly mechanism of importing and exporting note types,
 and everyone is welcome to add their templates to our collection by making a pull request.
@@ -21,10 +21,13 @@ Windows is not recommended [because it is malware](https://www.gnu.org/proprieta
 
 <details>
 
-Install Python from the Microsoft Store or check if you already have the good version putting on your file explorer search bar
+Install Python from the Microsoft Store or check if you already have the good version
+putting on your file explorer search bar
+
 ````
 %LOCALAPPDATA%\Microsoft\WindowsApps\python3
 ````
+
 If you have the correct version, you can just close the python's window that just popped up.
 
 Make sure to add python3 to the `PATH`.
