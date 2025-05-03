@@ -1,5 +1,6 @@
 # gomi
 
+[![Download](https://img.shields.io/badge/PyPI-gomi-blue?logo=python)](https://pypi.org/project/gomi/)
 [![Chat](https://img.shields.io/badge/chat-join-green.svg)](https://tatsumoto-ren.github.io/blog/join-our-community.html)
 [![Channel](https://shields.io/badge/channel-subscribe-blue?logo=telegram&color=3faee8)](https://t.me/ajatt_tools)
 [![Donate](https://img.shields.io/badge/patreon-support-orange)](https://tatsumoto.neocities.org/blog/donating-to-tatsumoto)
