@@ -81,6 +81,10 @@ def save_files_to_anki_col(file_names: frozenset[str]) -> None:
     The files should exist in the "media" folder on disk.
     """
     for file_name in file_names:
+        if is_ajt_japanese_addon_file(file_name):
+            # Skip files added by AJT Japanese.
+            # AJT Japanese will add them when a profile is opened or when the add-on's settings are saved.
+            continue
         full_path = REPO_MEDIA_DIR / file_name
         if not os.path.isfile(full_path):
             print(f"not found on disk: '{full_path}'")

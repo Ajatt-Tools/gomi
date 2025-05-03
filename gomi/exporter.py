@@ -105,12 +105,20 @@ def save_note_type(model: NoteType):
             f.write(f"# {model.name}\n\n*Description and screenshots here.*")
 
 
+def is_ajt_japanese_addon_file(file_name: str) -> bool:
+    """
+    Skip files added by AJT Japanese.
+    AJT Japanese will add them when a profile is opened or when the add-on's settings are saved.
+    """
+    return file_name.startswith(AJT_FILE_NAME_PREFIX)
+
+
 def save_media_imports(model: NoteType) -> None:
     """
     Save fonts and CSS files referenced in the CSS template to the "media" folder.
     """
     for file_name in find_referenced_media_files(model):
-        if file_name.startswith(AJT_FILE_NAME_PREFIX):
+        if is_ajt_japanese_addon_file(file_name):
             # Skip files added by AJT Japanese.
             # AJT Japanese will add them when a profile is opened or when the add-on's settings are saved.
             continue
