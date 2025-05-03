@@ -86,7 +86,7 @@ def save_files_to_anki_col(file_names: frozenset[str]) -> None:
             # AJT Japanese will add them when a profile is opened or when the add-on's settings are saved.
             continue
         full_path = REPO_MEDIA_DIR / file_name
-        if not os.path.isfile(full_path):
+        if not full_path.is_file():
             print(f"not found on disk: '{full_path}'")
             continue
         invoke("storeMediaFile", filename=file_name, path=full_path)
