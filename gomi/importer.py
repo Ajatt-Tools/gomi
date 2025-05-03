@@ -89,7 +89,8 @@ def save_files_to_anki_col(file_names: frozenset[str]) -> None:
         if not full_path.is_file():
             print(f"not found on disk: '{full_path}'")
             continue
-        invoke("storeMediaFile", filename=file_name, path=full_path)
+        # File path should be JSON serializable
+        invoke("storeMediaFile", filename=file_name, path=str(full_path.absolute()))
         print(f"saved file in Anki collection: '{file_name}'")
 
 
