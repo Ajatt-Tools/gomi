@@ -25,6 +25,7 @@ TEMPLATES = [
         """,
         back="""
         <div class="test"><script src='my_script.js'></script></div>
+        <script src="_ajt_japanese.js"></script>
         """,
     )
 ]
