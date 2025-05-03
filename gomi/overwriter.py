@@ -19,7 +19,7 @@ def overwrite_note_type():
     print(f"Writing templates from {model_name_on_disk} onto {model_name_in_anki}...")
 
     model = models_on_disk[model_name_on_disk]
-    save_files_to_anki_col(find_referenced_media_files(model.css))
+    save_files_to_anki_col(find_referenced_media_files(model))
     send_note_type(model.rename(model_name_in_anki))
 
     print("Done.")

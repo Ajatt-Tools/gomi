@@ -109,8 +109,7 @@ def save_media_imports(model: NoteType) -> None:
     """
     Save fonts and CSS files referenced in the CSS template to the "media" folder.
     """
-    linked_media_files = find_referenced_media_files(model.css)
-    for file_name in linked_media_files:
+    for file_name in find_referenced_media_files(model):
         if file_name.startswith(AJT_FILE_NAME_PREFIX):
             # Skip files added by AJT Japanese.
             # AJT Japanese will add them when a profile is opened or when the add-on's settings are saved.

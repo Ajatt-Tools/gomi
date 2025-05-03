@@ -73,7 +73,7 @@ def save_files_to_anki_col(file_names: frozenset[str]) -> None:
     The files should exist in the "media" folder on disk.
     """
     for file_name in file_names:
-        full_path = os.path.join(REPO_MEDIA_DIR, file_name)
+        full_path = REPO_MEDIA_DIR / file_name
         if not os.path.isfile(full_path):
             print(f"not found on disk: '{full_path}'")
             continue
@@ -90,5 +90,5 @@ def import_note_type() -> None:
         model = read_model(model_dir_name)
         model = strip_ajt_references(model)
         send_note_type(model)
-        save_files_to_anki_col(find_referenced_media_files(model.css))
+        save_files_to_anki_col(find_referenced_media_files(model))
         print("Done.")

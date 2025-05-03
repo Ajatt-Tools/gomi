@@ -1,8 +1,9 @@
-from gomi.common import find_referenced_media_files
+from gomi.common import find_url_imports, find_js_files, CardTemplate
 
-EXAMPLE = """
+MODEL_CSS = """
 @charset "UTF-8";
 @import url("_ajt_japanese_24.7.14.1.css");
+@import url("_tsc_card_css.css");
 @font-face {
     font-family: "KanjiStrokeOrders";
     src: url("_kso.woff2");
@@ -13,7 +14,27 @@ EXAMPLE = """
 }
 """
 
+TEMPLATES = [
+    CardTemplate(
+        name="test",
+        front="""
+        <main>
+            <script src="_script.js"></script>
+        </main>
+        <script src="_ajt_japanese.js"></script>
+        """,
+        back="""
+        <div class="test"><script src='my_script.js'></script></div>
+        """,
+    )
+]
 
-def test_find_referenced_media() -> None:
-    result = find_referenced_media_files(EXAMPLE)
-    assert result == {"_ajt_japanese_24.7.14.1.css", "_kso.woff2", "_yumin.woff2"}
+
+def test_find_referenced_urls() -> None:
+    result = find_url_imports(MODEL_CSS)
+    assert frozenset(result) == {"_ajt_japanese_24.7.14.1.css", "_kso.woff2", "_yumin.woff2", "_tsc_card_css.css"}
+
+
+def test_find_js_files() -> None:
+    result = find_js_files(TEMPLATES)
+    assert frozenset(result) == {"_script.js", "_ajt_japanese.js", "my_script.js"}

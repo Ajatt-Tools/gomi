@@ -6,8 +6,8 @@ import re
 from dataclasses import dataclass
 from .consts import REPO_MEDIA_DIR, NOTE_TYPES_DIR
 
-
-RE_MEDIA_IMPORT = re.compile(r"url\([\"']([\w_.]+\.(?:[ot]tf|woff\d?|css))[\"']\)", flags=re.IGNORECASE)
+RE_MEDIA_IMPORT = re.compile(r"url\([\"']([^\"']+\.(?:[ot]tf|woff\d?|css))[\"']\)", flags=re.IGNORECASE)
+RE_JS_IMPORT = re.compile(r"<script [^<>]*src=[\"']([^\"']+\.js)[\"']></script>", flags=re.IGNORECASE)
 
 
 class ANTPError(Exception):
@@ -55,8 +55,25 @@ def select(items: list[str], msg: str = "Select item number: ") -> str | None:
     return items[idx]
 
 
-def find_referenced_media_files(template_css: str) -> frozenset[str]:
-    return frozenset(re.findall(RE_MEDIA_IMPORT, template_css))
+def find_js_files(templates: list[CardTemplate]) -> list[str]:
+    return re.findall(
+        pattern=RE_JS_IMPORT,
+        string="\n".join(f"{template.front}\n{template.back}" for template in templates),
+    )
+
+
+def find_url_imports(model_css: str) -> list[str]:
+    return re.findall(
+        pattern=RE_MEDIA_IMPORT,
+        string=model_css,
+    )
+
+
+def find_referenced_media_files(model: NoteType) -> frozenset[str]:
+    """
+    Find files referenced by the note type's templates. E.g., fonts, CSS files, JS scripts.
+    """
+    return frozenset(find_url_imports(model.css)) | frozenset(find_js_files(model.templates))
 
 
 def init():

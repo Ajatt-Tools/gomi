@@ -40,6 +40,6 @@ def update_note_type():
     if model_name := select(updatable_models):
         print(f"Selected note type: {model_name}")
         model = models_on_disk[model_name]
-        save_files_to_anki_col(find_referenced_media_files(model.css))
+        save_files_to_anki_col(find_referenced_media_files(model))
         send_note_type(model)
         print("Done.")
