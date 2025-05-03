@@ -10,7 +10,7 @@ name = "gomi"
 dynamic = ["version"]
 description = 'Package to store and manage Note Types for Anki in a git repository.'
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = {file = "LICENSE"}
 keywords = []
 authors = [
@@ -18,8 +18,8 @@ authors = [
 ]
 classifiers = [
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
@@ -68,7 +68,7 @@ exclude_lines = [
 
 [tool.black]
 line-length = 120
-target-version = ['py311']
+target-version = ['py312']
 
 [tool.isort]
 profile = "black"
