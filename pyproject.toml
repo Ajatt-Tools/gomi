@@ -69,6 +69,7 @@ exclude_lines = [
 [tool.black]
 line-length = 120
 target-version = ['py312']
+unstable = true
 
 [tool.isort]
 profile = "black"

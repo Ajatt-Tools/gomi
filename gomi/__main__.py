@@ -33,16 +33,16 @@ def program_name() -> str:
 def print_help():
     options = (
         ("import", "Add one of the stored note types to Anki."),
-        ("update", "Overwrite a previously imported note type with new data. " "Fields will not be updated."),
+        ("update", "Overwrite a previously imported note type with new data. Fields will not be updated."),
         (
             "overwrite",
-            "Overwrite a note type in Anki with new data from a stored note type. " "Fields will not be updated.",
+            "Overwrite a note type in Anki with new data from a stored note type. Fields will not be updated.",
         ),
         ("export", "Save your note type to disk as a template."),
         ("list", "List models stored in the templates folder."),
         ("-v, --verbose", "Show detailed info when errors occur."),
     )
-    print(f"Usage: {program_name()} [OPTIONS]\n\n" "Options:")
+    print(f"Usage: {program_name()} [OPTIONS]\n\nOptions:")
     col_width = [max(len(word) for word in col) + 2 for col in zip(*options)]
     for row in options:
         print(" " * 4, "".join(col.ljust(col_width[i]) for i, col in enumerate(row)), sep="")
