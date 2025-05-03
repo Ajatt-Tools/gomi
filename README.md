@@ -109,3 +109,29 @@ git add templates media && git commit
 ```
 
 After committing your template, please [create a pull request](https://github.com/Ajatt-Tools/AnkiNoteTypes/pulls).
+
+## Caveats
+
+Although `gomi` supports note types that reference external `CSS` and `JS` files
+stored in the `collection.media` folder,
+for example,
+by using `<script src="_script.js"></script>` in a Front or Back template,
+or by using `@import url("_styling.css");` in the Styling section,
+there are a few caveats to keep in mind.
+
+* The filenames should begin with an underscore to prevent Anki from flagging them as unused.
+* If you use _AnkiWeb_ to sync your collection with other devices (like an Android phone),
+  external files will only sync once.
+  If you change your externally linked `CSS` or `JS` file,
+  you'll need to rename it so that updates are sent to your other devices.
+  However, referencing external fonts is acceptable because they typically need to be synced only once.
+* Specifically, loading external `JS` files
+  [causes a slight flicker or lag](https://forums.ankiweb.net/t/flickering-issue-caused-by-js/47065)
+  whenever you flip a card.
+  It is recommended that you use inline scripts instead:
+
+  ```html
+  <script>
+  // some code
+  </script>
+  ```
