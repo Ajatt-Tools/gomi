@@ -111,6 +111,15 @@ git add templates media && git commit
 
 After committing your template, please [create a pull request](https://github.com/Ajatt-Tools/AnkiNoteTypes/pulls).
 
+## Automatic reloading
+
+Additionally, you can install [Anki Preview Reloader](https://ankiweb.net/shared/info/571150035)
+to automatically reload the preview in the templates screen or the card preview window
+when you update your note type using `gomi`.
+For example, you can edit your templates in Vscodium,
+and then run `gomi update` to send the changes to Anki,
+with the updates being shown immediately.
+
 ## Caveats
 
 Although `gomi` supports note types that reference external `CSS` and `JS` files
