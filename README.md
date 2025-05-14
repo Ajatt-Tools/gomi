@@ -81,10 +81,6 @@ to Anki, run:
 gomi import
 ```
 
-**Note:** When using [AJT Japanese](https://tatsumoto.neocities.org/blog/anki-japanese-support.html),
-reopen the current profile to add the add-on's scripts to the note type after importing and after updating.
-Alternatively, open AJT Japanese's settings and press "Ok" ("Accept").
-
 ### Updating
 
 If you imported a note type from the AJATT collection before,
